@@ -7,6 +7,7 @@ launch/display.launch.py
 resource/ros2_maritime
 ros2_maritime/__init__.py
 ros2_maritime/dynamics_sim.py
+ros2_maritime/gazebo_pose_updater.py
 ros2_maritime/heading.py
 ros2_maritime/imu_relay.py
 ros2_maritime/navigator.py

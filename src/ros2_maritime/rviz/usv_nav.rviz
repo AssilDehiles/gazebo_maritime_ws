@@ -1,0 +1,43 @@
+Panels:
+  - Class: rviz_common/Displays
+    Name: Displays
+  - Class: rviz_common/Views
+    Name: Views
+Visualization Manager:
+  Class: ""
+  Global Options:
+    Background Color: 0; 10; 40
+    Fixed Frame: odom
+  Displays:
+    - Class: rviz_default_plugins/Grid
+      Name: Grid
+      Enabled: true
+      Cell Size: 10
+      Color: 100; 100; 180
+      Plane Cell Count: 20
+    - Class: rviz_default_plugins/Odometry
+      Name: Trajectoire USV
+      Enabled: true
+      Topic:
+        Value: /usv/odometry
+      Keep: 1000
+      Shape:
+        Alpha: 1.0
+        Color: 0; 255; 0
+        Scale:
+          X: 2.0
+          Y: 0.5
+          Z: 0.5
+    - Class: rviz_default_plugins/TF
+      Name: TF
+      Enabled: true
+      Show Names: true
+      Marker Scale: 2.0
+  Tools:
+    - Class: rviz_default_plugins/MoveCamera
+  Value: true
+Window Geometry:
+  Displays:
+    collapsed: false
+  Views:
+    collapsed: false

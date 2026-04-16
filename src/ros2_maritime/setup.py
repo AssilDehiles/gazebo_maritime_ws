@@ -25,6 +25,7 @@ setup(
             "heading    = ros2_maritime.heading:main",
             "navigator  = ros2_maritime.navigator:main",
             "dynamics_sim = ros2_maritime.dynamics_sim:main",
+            "gazebo_pose_updater = ros2_maritime.gazebo_pose_updater:main",
         ],
     },
 )

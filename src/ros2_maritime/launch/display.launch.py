@@ -4,6 +4,7 @@ from launch import LaunchDescription
 from launch.actions import ExecuteProcess
 from launch_ros.actions import Node
 from ament_index_python.packages import get_package_share_directory
+import os
 
 def generate_launch_description():
     pkg        = get_package_share_directory("ros2_maritime")
@@ -13,7 +14,15 @@ def generate_launch_description():
         "~/gazebo_maritime_ws/src/gazebo_maritime/worlds/monde_usv_leger.sdf"
     )
     return LaunchDescription([
-        ExecuteProcess(cmd=["gz","sim","-r","-s",world_path], output="screen"),
+        ExecuteProcess(
+            cmd=["gz","sim","-r","-s",world_path],
+            output="screen",
+            additional_env={
+                "DRI_PRIME": "1",
+                "MESA_GL_VERSION_OVERRIDE": "4.5",
+                "MESA_GLSL_VERSION_OVERRIDE": "450"
+            }
+        ),
         Node(package="ros_gz_bridge", executable="parameter_bridge",
              name="ros_gz_bridge", output="screen",
              parameters=[{"config_file": bridge_cfg}]),
