@@ -73,9 +73,9 @@ class Navigator(Node):
             self.reached = True
             return
         # Gains du controleur
-        Kp_thrust = 0.5   # gain vitesse
-        Kp_yaw    = 0.8   # gain cap
-        thrust_max = 80.0
+        Kp_thrust = 0.3   # gain vitesse
+        Kp_yaw    = 0.4   # gain cap
+        thrust_max = 50.0
         # Commande de base proportionnelle a la distance
         base_thrust = min(Kp_thrust * distance, thrust_max)
         # Correction de cap
