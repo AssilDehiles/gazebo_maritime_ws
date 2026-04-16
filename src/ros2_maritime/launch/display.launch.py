@@ -29,6 +29,4 @@ def generate_launch_description():
         Node(package="robot_localization", executable="ekf_node",
              name="ekf_filter_node_map", output="screen",
              parameters=[ekf_cfg]),
-        Node(package="rviz2", executable="rviz2",
-             name="rviz2", output="screen"),
     ])

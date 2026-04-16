@@ -6,8 +6,10 @@ config/ekf_filter.yaml
 launch/display.launch.py
 resource/ros2_maritime
 ros2_maritime/__init__.py
+ros2_maritime/dynamics_sim.py
 ros2_maritime/heading.py
 ros2_maritime/imu_relay.py
+ros2_maritime/navigator.py
 ros2_maritime.egg-info/PKG-INFO
 ros2_maritime.egg-info/SOURCES.txt
 ros2_maritime.egg-info/dependency_links.txt

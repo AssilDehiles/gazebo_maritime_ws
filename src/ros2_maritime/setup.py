@@ -23,6 +23,8 @@ setup(
         "console_scripts": [
             "imu_relay  = ros2_maritime.imu_relay:main",
             "heading    = ros2_maritime.heading:main",
+            "navigator  = ros2_maritime.navigator:main",
+            "dynamics_sim = ros2_maritime.dynamics_sim:main",
         ],
     },
 )
