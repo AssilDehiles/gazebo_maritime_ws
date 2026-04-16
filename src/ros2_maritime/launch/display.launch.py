@@ -13,7 +13,7 @@ def generate_launch_description():
         "~/gazebo_maritime_ws/src/gazebo_maritime/worlds/monde_usv_leger.sdf"
     )
     return LaunchDescription([
-        ExecuteProcess(cmd=["gz","sim","-r",world_path], output="screen"),
+        ExecuteProcess(cmd=["gz","sim","-r","-s",world_path], output="screen"),
         Node(package="ros_gz_bridge", executable="parameter_bridge",
              name="ros_gz_bridge", output="screen",
              parameters=[{"config_file": bridge_cfg}]),
