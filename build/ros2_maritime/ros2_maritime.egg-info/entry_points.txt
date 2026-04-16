@@ -1,0 +1,3 @@
+[console_scripts]
+heading = ros2_maritime.heading:main
+imu_relay = ros2_maritime.imu_relay:main

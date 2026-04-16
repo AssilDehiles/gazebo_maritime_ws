@@ -1,0 +1,7 @@
+Metadata-Version: 2.1
+Name: ros2-maritime
+Version: 0.1.0
+Summary: Navigation autonome USV - PFE 2025/2026
+Maintainer: assil
+Maintainer-email: assil@usv-ros2.local
+License: MIT

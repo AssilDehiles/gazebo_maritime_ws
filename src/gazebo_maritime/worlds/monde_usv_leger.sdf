@@ -1,0 +1,83 @@
+<?xml version="1.0" ?>
+<sdf version="1.8">
+  <world name="usv_monde_leger">
+    <physics name="1ms" type="ode">
+      <max_step_size>0.01</max_step_size>
+      <real_time_factor>1.0</real_time_factor>
+    </physics>
+    <plugin filename="gz-sim-physics-system" name="gz::sim::systems::Physics"/>
+    <plugin filename="gz-sim-scene-broadcaster-system" name="gz::sim::systems::SceneBroadcaster"/>
+    <plugin filename="gz-sim-user-commands-system" name="gz::sim::systems::UserCommands"/>
+    <plugin filename="gz-sim-imu-system" name="gz::sim::systems::Imu"/>
+    <plugin filename="gz-sim-navsat-system" name="gz::sim::systems::NavSat"/>
+    <plugin filename="gz-sim-magnetometer-system" name="gz::sim::systems::Magnetometer"/>
+    <light type="directional" name="sun">
+      <cast_shadows>false</cast_shadows>
+      <pose>0 0 10 0 0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+    </light>
+    <model name="ocean_plane"><static>true</static>
+      <link name="link">
+        <visual name="visual">
+          <geometry><plane><normal>0 0 1</normal><size>1000 1000</size></plane></geometry>
+          <material><ambient>0.0 0.2 0.5 1</ambient><diffuse>0.0 0.3 0.7 0.9</diffuse></material>
+        </visual>
+      </link>
+    </model>
+    <model name="wamv"><static>true</static><pose>0 0 0.25 0 0 0</pose>
+      <link name="base_link">
+        <inertial><mass>180.0</mass><inertia><ixx>120.0</ixx><iyy>393.0</iyy><izz>446.0</izz><ixy>0</ixy><ixz>0</ixz><iyz>0</iyz></inertia></inertial>
+        <visual name="visual">
+          <geometry><box><size>4.0 2.0 0.5</size></box></geometry>
+          <material><ambient>0.2 0.2 0.8 1</ambient><diffuse>0.2 0.2 0.8 1</diffuse></material>
+        </visual>
+        <sensor name="imu_sensor" type="imu"><always_on>1</always_on><update_rate>100</update_rate><topic>/wamv/sensors/imu</topic></sensor>
+        <sensor name="gps_sensor" type="navsat"><always_on>1</always_on><update_rate>10</update_rate><topic>/wamv/sensors/gps</topic></sensor>
+        <sensor name="mag_sensor" type="magnetometer"><always_on>1</always_on><update_rate>50</update_rate><topic>/wamv/sensors/magnetometer</topic></sensor>
+      </link>
+      <link name="left_propeller"><pose>-1.5 0.8 0.0 0 0 0</pose>
+        <inertial><mass>0.5</mass><inertia><ixx>0.01</ixx><iyy>0.01</iyy><izz>0.01</izz></inertia></inertial>
+        <visual name="visual"><geometry><cylinder><radius>0.12</radius><length>0.05</length></cylinder></geometry>
+          <material><ambient>0.8 0.1 0.1 1</ambient></material></visual>
+      </link>
+      <joint name="left_engine_propeller_joint" type="revolute">
+        <parent>base_link</parent><child>left_propeller</child>
+        <axis><xyz>1 0 0</xyz><limit><lower>-1e16</lower><upper>1e16</upper></limit></axis>
+      </joint>
+      <link name="right_propeller"><pose>-1.5 -0.8 0.0 0 0 0</pose>
+        <inertial><mass>0.5</mass><inertia><ixx>0.01</ixx><iyy>0.01</iyy><izz>0.01</izz></inertia></inertial>
+        <visual name="visual"><geometry><cylinder><radius>0.12</radius><length>0.05</length></cylinder></geometry>
+          <material><ambient>0.8 0.1 0.1 1</ambient></material></visual>
+      </link>
+      <joint name="right_engine_propeller_joint" type="revolute">
+        <parent>base_link</parent><child>right_propeller</child>
+        <axis><xyz>1 0 0</xyz><limit><lower>-1e16</lower><upper>1e16</upper></limit></axis>
+      </joint>
+      <plugin filename="gz-sim-thruster-system" name="gz::sim::systems::Thruster">
+        <joint_name>left_engine_propeller_joint</joint_name>
+        <thrust_coefficient>0.004422</thrust_coefficient>
+        <fluid_density>1000</fluid_density>
+        <propeller_diameter>0.24</propeller_diameter>
+        <velocity_control>true</velocity_control>
+        <use_angvel_cmd>false</use_angvel_cmd>
+        <topic>/wamv/thrusters/left/thrust</topic>
+      </plugin>
+      <plugin filename="gz-sim-thruster-system" name="gz::sim::systems::Thruster">
+        <joint_name>right_engine_propeller_joint</joint_name>
+        <thrust_coefficient>0.004422</thrust_coefficient>
+        <fluid_density>1000</fluid_density>
+        <propeller_diameter>0.24</propeller_diameter>
+        <velocity_control>true</velocity_control>
+        <use_angvel_cmd>false</use_angvel_cmd>
+        <topic>/wamv/thrusters/right/thrust</topic>
+      </plugin>
+    </model>
+    <spherical_coordinates>
+      <surface_model>EARTH_WGS84</surface_model>
+      <latitude_deg>36.7538</latitude_deg>
+      <longitude_deg>3.0588</longitude_deg>
+      <elevation>0</elevation>
+      <heading_deg>0</heading_deg>
+    </spherical_coordinates>
+  </world>
+</sdf>

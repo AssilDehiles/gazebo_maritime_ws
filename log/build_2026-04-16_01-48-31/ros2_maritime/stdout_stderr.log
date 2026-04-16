@@ -1,0 +1,16 @@
+running develop
+running egg_info
+writing ros2_maritime.egg-info/PKG-INFO
+writing dependency_links to ros2_maritime.egg-info/dependency_links.txt
+writing entry points to ros2_maritime.egg-info/entry_points.txt
+writing requirements to ros2_maritime.egg-info/requires.txt
+writing top-level names to ros2_maritime.egg-info/top_level.txt
+reading manifest file 'ros2_maritime.egg-info/SOURCES.txt'
+writing manifest file 'ros2_maritime.egg-info/SOURCES.txt'
+running build_ext
+Creating /home/assil/gazebo_maritime_ws/install/ros2_maritime/lib/python3.12/site-packages/ros2-maritime.egg-link (link to .)
+Installing heading script to /home/assil/gazebo_maritime_ws/install/ros2_maritime/lib/ros2_maritime
+Installing imu_relay script to /home/assil/gazebo_maritime_ws/install/ros2_maritime/lib/ros2_maritime
+
+Installed /home/assil/gazebo_maritime_ws/build/ros2_maritime
+running symlink_data

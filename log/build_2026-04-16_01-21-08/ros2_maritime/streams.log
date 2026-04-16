@@ -1,0 +1,25 @@
+[1.805s] Invoking command in '/home/assil/gazebo_maritime_ws/build/ros2_maritime': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/assil/gazebo_maritime_ws/build/ros2_maritime/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/assil/gazebo_maritime_ws/install/ros2_maritime/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/assil/gazebo_maritime_ws/build/ros2_maritime/build --no-deps symlink_data
+[2.428s] running develop
+[2.751s] running egg_info
+[2.751s] creating ros2_maritime.egg-info
+[2.782s] writing ros2_maritime.egg-info/PKG-INFO
+[2.782s] writing dependency_links to ros2_maritime.egg-info/dependency_links.txt
+[2.782s] writing requirements to ros2_maritime.egg-info/requires.txt
+[2.783s] writing top-level names to ros2_maritime.egg-info/top_level.txt
+[2.783s] writing manifest file 'ros2_maritime.egg-info/SOURCES.txt'
+[2.847s] reading manifest file 'ros2_maritime.egg-info/SOURCES.txt'
+[2.848s] writing manifest file 'ros2_maritime.egg-info/SOURCES.txt'
+[2.880s] running build_ext
+[2.881s] Creating /home/assil/gazebo_maritime_ws/install/ros2_maritime/lib/python3.12/site-packages/ros2-maritime.egg-link (link to .)
+[2.881s] 
+[2.882s] Installed /home/assil/gazebo_maritime_ws/build/ros2_maritime
+[2.882s] running symlink_data
+[2.882s] creating /home/assil/gazebo_maritime_ws/install/ros2_maritime/share/ament_index
+[2.882s] creating /home/assil/gazebo_maritime_ws/install/ros2_maritime/share/ament_index/resource_index
+[2.883s] creating /home/assil/gazebo_maritime_ws/install/ros2_maritime/share/ament_index/resource_index/packages
+[2.883s] symbolically linking /home/assil/gazebo_maritime_ws/build/ros2_maritime/resource/ros2_maritime -> /home/assil/gazebo_maritime_ws/install/ros2_maritime/share/ament_index/resource_index/packages
+[2.883s] symbolically linking /home/assil/gazebo_maritime_ws/build/ros2_maritime/package.xml -> /home/assil/gazebo_maritime_ws/install/ros2_maritime/share/ros2_maritime
+[2.883s] creating /home/assil/gazebo_maritime_ws/install/ros2_maritime/share/ros2_maritime/launch
+[2.883s] creating /home/assil/gazebo_maritime_ws/install/ros2_maritime/share/ros2_maritime/config
+[2.884s] creating /home/assil/gazebo_maritime_ws/install/ros2_maritime/share/ros2_maritime/rviz
+[2.941s] Invoked command in '/home/assil/gazebo_maritime_ws/build/ros2_maritime' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/assil/gazebo_maritime_ws/build/ros2_maritime/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/assil/gazebo_maritime_ws/install/ros2_maritime/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/assil/gazebo_maritime_ws/build/ros2_maritime/build --no-deps symlink_data
