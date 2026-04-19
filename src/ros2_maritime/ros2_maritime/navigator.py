@@ -21,6 +21,19 @@ class Navigator(Node):
         self.current_lon = None
         self.current_heading = 0.0
         self.reached = False
+        # Variables PID cap
+        self.Kp_yaw = 0.2
+        self.Ki_yaw = 0.001
+        self.Kd_yaw = 0.01
+        self.integral_yaw = 0.0
+        self.prev_error_yaw = 0.0
+        # Variables PID vitesse
+        self.Kp_thrust = 0.15
+        self.Ki_thrust = 0.0005
+        self.Kd_thrust = 0.0
+        self.integral_thrust = 0.0
+        self.prev_error_thrust = 0.0
+        self.dt = 0.1  # 10 Hz
         # Subscribers
         self.create_subscription(Odometry, "/usv/odometry", self.odom_cb, 10)
         self.create_subscription(Float64, "/usv/heading_deg", self.heading_cb, 10)
@@ -72,16 +85,25 @@ class Navigator(Node):
             self.stop()
             self.reached = True
             return
-        # Gains du controleur
-        Kp_thrust = 0.3   # gain vitesse
-        Kp_yaw    = 0.4   # gain cap
-        thrust_max = 50.0
-        # Commande de base proportionnelle a la distance
-        base_thrust = min(Kp_thrust * distance, thrust_max)
-        # Correction de cap
-        yaw_correction = Kp_yaw * heading_error
-        yaw_correction = max(-40.0, min(40.0, yaw_correction))
-        # Commandes gauche/droite
+        # ── PID Cap ─────────────────────────────────────────
+        self.integral_yaw += heading_error * self.dt
+        self.integral_yaw  = max(-5.0, min(5.0, self.integral_yaw))
+        derivative_yaw     = (heading_error - self.prev_error_yaw) / self.dt
+        yaw_correction     = (self.Kp_yaw * heading_error +
+                               self.Ki_yaw * self.integral_yaw +
+                               self.Kd_yaw * derivative_yaw)
+        yaw_correction     = max(-40.0, min(40.0, yaw_correction))
+        self.prev_error_yaw = heading_error
+        # ── PID Vitesse ──────────────────────────────────────
+        self.integral_thrust += distance * self.dt
+        self.integral_thrust  = max(0.0, min(20.0, self.integral_thrust))
+        derivative_thrust     = (distance - self.prev_error_thrust) / self.dt
+        base_thrust           = (self.Kp_thrust * distance +
+                                  self.Ki_thrust * self.integral_thrust +
+                                  self.Kd_thrust * derivative_thrust)
+        base_thrust           = max(0.0, min(50.0, base_thrust))
+        self.prev_error_thrust = distance
+        # ── Commandes moteurs ────────────────────────────────
         left_thrust  = base_thrust - yaw_correction
         right_thrust = base_thrust + yaw_correction
         self.publish_thrust(left_thrust, right_thrust)
