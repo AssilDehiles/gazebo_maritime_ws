@@ -4,6 +4,7 @@ from launch import LaunchDescription
 from launch.actions import ExecuteProcess
 from launch_ros.actions import Node
 from ament_index_python.packages import get_package_share_directory
+from launch.actions import TimerAction
 
 
 def generate_launch_description():
@@ -59,5 +60,18 @@ def generate_launch_description():
             name="ekf_filter_node_map",
             output="screen",
             parameters=[ekf_cfg],
+        ),
+        # RViz sur GPU Intel (DRI_PRIME=0) : le driver radeonsi (AMD) provoque un kernel panic avec RViz2
+        TimerAction(
+            period=3.0,
+            actions=[
+                ExecuteProcess(
+                    cmd=["rviz2", "-d", os.path.join(pkg, "rviz", "usv_nav.rviz")],
+                    output="screen",
+                    additional_env={
+                        "DRI_PRIME": "0",
+                    },
+                ),
+            ],
         ),
     ])
