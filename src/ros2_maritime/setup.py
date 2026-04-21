@@ -26,6 +26,7 @@ setup(
             "navigator  = ros2_maritime.navigator:main",
             "dynamics_sim = ros2_maritime.dynamics_sim:main",
             "gazebo_pose_updater = ros2_maritime.gazebo_pose_updater:main",
+            "teleop_key          = ros2_maritime.teleop_key:main",
         ],
     },
 )

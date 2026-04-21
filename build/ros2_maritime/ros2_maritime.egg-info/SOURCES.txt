@@ -18,6 +18,7 @@ ros2_maritime/gazebo_pose_updater.py
 ros2_maritime/heading.py
 ros2_maritime/imu_relay.py
 ros2_maritime/navigator.py
+ros2_maritime/teleop_key.py
 ros2_maritime.egg-info/PKG-INFO
 ros2_maritime.egg-info/SOURCES.txt
 ros2_maritime.egg-info/dependency_links.txt

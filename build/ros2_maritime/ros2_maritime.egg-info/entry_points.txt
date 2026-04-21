@@ -4,3 +4,4 @@ gazebo_pose_updater = ros2_maritime.gazebo_pose_updater:main
 heading = ros2_maritime.heading:main
 imu_relay = ros2_maritime.imu_relay:main
 navigator = ros2_maritime.navigator:main
+teleop_key = ros2_maritime.teleop_key:main
